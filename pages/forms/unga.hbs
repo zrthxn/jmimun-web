@@ -1,0 +1,151 @@
+
+{{>header}}
+
+
+<form action="/_unga" method ="POST" name="unga">
+        <section id ="s1" style = "display:block">
+            <p>
+                THIS FORM IS FOR APPLICANTS TO THE "General Assembly" COMMITTEE.<br>
+                Please answer all questions honestly and to the full extent of your knowledge. The Secretariat reserves the right to cancel your selection if any of your answers are found to be deliberately false.<br><br>
+                Consider following definitions while filling the "CATEGORY" column in the form.<br><br>
+                Domestic : Those participants who are residing and pursuing their education in India.<br>
+                NRI ( Non Resident Indian ) : Indian citizens pursuing their education from abroad.<br>
+                Foreign National : All Delegates who do not hold the Indian citizenship.<br><br>
+                REGISTRATION FEE DETAILS:<br>
+                Rs. 1200 INR per delegate ( For Domestic Delegates )<br>
+                $ 85 USD per delegate ( For NRI and Foreign national categories )<br><br>
+                Processes Involved :
+                <ol>
+                    <li>Registration rounds are opened by the secretariat.</li>
+                    <li>Applicant fills the registration form.</li>
+                    <li>Registration round gets over.</li>
+                    <li>Allotments of positions are done by the secretariat to the qualified applicants.</li>
+                    <li>Applicants get a time slab of 3 days to log in to their portals and make the payment. As an applicant makes the  payment, their respective seats get booked and the respective committee and position gets confirmed.</li>
+                </ol>
+            </p>
+                <input type="radio" name="category" value="Domestic">Domestic<br><br>
+                <input type="radio" name="category" value="NRI">NRI<br><br>
+                <input type="radio" name="category" value="Foreign National">Foreign National<br><br>
+            <button type="button" onclick="showNext()">NEXT</button>
+        </section>
+        <section id="s2" style="display:none">
+            <h2>About You</h2>
+            <h3>Personal Details</h3>
+                <input type="text" name="name"><br>
+                Please enter your FULL NAME in BLOCK LETTERS/CAPITAL LETTERS<br>
+                <input type="text" name="inst"><br>
+                Name of the Institution<br><br>
+                Where do you study/work?<br>
+                <input type="radio" name="instType" value="School">School<br><br>
+                <input type="radio" name="instType" value="College">College<br><br>
+                <input type="radio" name="instType" value="University">University<br><br>
+                <input type="radio" name="instType" value="Other">Other:<input type="text" name="instTypeo"><br><br>
+                Age<br>
+                <select name="age">
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                </select><br><br>
+                Email<br>
+                This email address will be the primary means of contact between the Secretariat and you. You will receive a confirmation email after completion of registration on this address.<br>
+                <input type="text" name="email"><br><br>
+                Phone/Contact Number<br>
+                Please enter the full mobile number, i.e including the country code.<br>
+                <input type="text" name="phone"><br><br>
+                Accommodation<br>
+                <select name="accommodation">
+                    <option value="yes">YES</option>
+                    <option value="no">NO</option>
+                </select><br><br>
+                Passport Number<br>
+                Kindly provide your Passport number if you belong to the "NRI" or "Foreign National" category . NOTE : Domestic delegates need not provide their passport number. They should write "NA" in the space provided.<br>
+                <input type="text" name="passport"><br><br>
+                Campus Ambassador Referral Code (if any)<br>
+                Only for those registering through a Campus Ambassador<br>
+                <input type="text" name="campusAmbassador"><br><br>
+            <button type="button" onclick="showNext()">NEXT</button>
+        </section>
+        <section id="s3" style="display:none">
+            <h2>
+                Preferences
+            </h2>
+            In the position preferences section, please select a position from those available for this committee.
+            <br>You can check positions on jmimun.net/resources<br><br>
+            Your MUN experience
+            From the drop-down list, please select the number of Model UN conferences you have attended as a delegate. This will help us allot you a country appropriate to your experience.<br>
+                <select name="xp">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10 or more">10 or more</option>
+                </select><br><br>
+                Mention your past MUN experiences in Detail<br>
+                If you don't have past prior relevant experience, write NA.<br>
+                <input type="text" name="xpDetail"><br><br>
+                <h3>Position Preferences</h3>
+                Position Preference 1<br>
+                country<br>
+                <input type="text" name="pref1"><br>
+                Position Preference 2<br>
+                country<br>
+                <input type="text" name="pref2"><br>
+                Position Preference 3<br>
+                country<br>
+                <input type="text" name="pref3"><br>
+            <button type="button" onclick="showNext()">NEXT</button>
+        </section>
+        <section id="s4" style="display:none">
+            <h2>Payment</h2>
+            There is a basic REGISTRATION FEE of Rs. 1200 INR per delegate ( For Domestic Delegates ) and $ 85 USD per delegate ( For NRI and Foreign national categories )<br>
+            NOTE: The delegate fee is exclusive of taxes and transaction charge.<br>
+            After you have registered, the Secretariat will review your application and allot you a position.<br>
+            In order to check the position allotted to you, visit www.jmimun.net/allotments after the round in which you are applying gets over.<br>
+            On this page, you will be required to enter your registration number and password, both of which will be emailed to you after completion of registration, and you will be shown the position you have been allotted. The same page will contain the payment information<br><br>
+
+            Do you agree to the payment?<br>
+            Do you agree to the terms of payment? Keep in mind that selecting NO may lead to cancellation of your application.<br>
+                <input type="radio" name="payment" value="YES">YES<br>
+                <input type="radio" name="payment" value="NO">NO<br>
+                <input type="submit" value="SUBMIT"><br>
+        </section>
+    </form>
+
+    {{>footer }}
+
+    <script>
+            function showNext()
+            {
+                var showEl
+                for(let i=1; i<=4; i++){
+                    let el = 's'+i;
+                    if(document.getElementById(el).style.display=='block'){
+                        i++;
+                        showEl = 's' +i;
+                        document.getElementById(el).style.display = 'none'
+                        document.getElementById(showEl).style.display = 'block'
+                        break;
+                    }
+                }
+            }
+        </script>
