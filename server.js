@@ -67,3 +67,29 @@ register.engine('hbs', hbs({
         __dirname + '/pages/partials'
     ]
 }))
+
+homepage.get('/unga', (req,res) =>{
+    res.render('unga', {'title': 'General Assembly Delegate Form | JMI International MUN 2019'})
+})
+
+homepage.post('_unga', (req,res) => {
+    if(req.body!=null){
+        let data =req.body
+        Gmailer.SingleDataDelivery({
+            to: data.email,
+            from: "thatazimjaved@gmail.com",
+            subject: "Registration received - Number"
+        }, "Registration received", []) 
+        GSheets.AppendToSpreadsheet([{
+            ssId : config.unga.ssid,
+            range: config.unga.sheet,
+            values: [ data.category, data.inst, data.instTypeo, data.age, data.email, data.phone, data.accomodation, data.passport, data.campusAmbassador, data.xp, data.xpDetail, data.pref1, data.pref2, data.pref3, data.payemnt ]
+        }])
+        res.render('success', {'title': "Success | JMI International MUN 2019"})
+        res.sendStatus(200);
+    }
+    else {
+        res.render('error', {'title': 'Error | JMI International MUN 2019'})
+        res.sendStatus(500)
+    }
+})
