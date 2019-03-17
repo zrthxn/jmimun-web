@@ -1,38 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{ title }}</title>
-    <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"/>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{ title }}</title>
+  <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"/>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body>
-    {{{ body }}}
+<body style="padding: 2.5em; background-color: #8bfbff;">
+  {{{ body }}}
 </body>
 
 <script>
-    function showNext() {
-        var showEl;
-        for(let i=1; i<=4; i++){
-            let el = 's'+i;
-            if(document.getElementById(el).style.display=='block'){
-                i++;
-                showEl = 's' +i;
-                document.getElementById(el).style.display = 'none'
-                document.getElementById(showEl).style.display = 'block'
-                break;
-            }
-        }
+  function showNext() {
+    var showEl;
+    for(let i=1; i<=document.getElementsByTagName("section").length; i++){
+      let el = 's' + i;
+      if(document.getElementById(el).style.display=='block'){
+        i++;
+        showEl = 's' + i;
+        document.getElementById(el).style.display = 'none';
+        document.getElementById(showEl).style.display = 'block';
+        document.documentElement.scrollTop = 0;
+        break;
+      }
     }
+  }
+
+  function showPrev() {
+    var showEl;
+    for(let i=1; i<=document.getElementsByTagName("section").length; i++){
+      let el = 's' + i;
+      if(document.getElementById(el).style.display=='block'){
+        i--;
+        showEl = 's' + i;
+        document.getElementById(el).style.display = 'none';
+        document.getElementById(showEl).style.display = 'block';
+        document.documentElement.scrollTop = 0;
+        break;
+      }
+    }
+  }
 </script>
 
+<style>
+  .question {
+    padding: 1em;
+    transition: all 0.5s ease;
+  } .question:active {
+    background-color: #eee;
+  } .question h5 {
+    font-weight: 600;
+  }
+  .description {
+    font-size: 0.85em;
+  }
+  .band {
+    background-color: #0f6fff;
+    padding: 0.5em;
+    color: #fff;
+    margin: 1em 0;
+    font-weight: 600;
+    font-size: 1.25em;
+  }
+</style>
 </html>

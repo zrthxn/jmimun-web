@@ -1,13 +1,45 @@
 {
-    "domain": "jmimun.net",
-    "Gmail" : {
-        "username": "Azim Javed",
-        "userId" : "thatazimjaved@gmail.com"
+  "domain": "jmimun.net",
+  "Gmail" : {
+    "username": "Azim Javed",
+    "userId" : "thatazimjaved@gmail.com"
+  },
+  "Sheets" : {
+    "unga" : {
+      "ssId" : "1Uvr50O4xnMOWnP9z6ZO5i7gf5tQoa6GsD5zPixZIIBk",
+      "sheet": "Sheet1"
     },
-    "Sheets" : {
-        "unga" : {
-            "ssId" : "1Uvr50O4xnMOWnP9z6ZO5i7gf5tQoa6GsD5zPixZIIBk",
-            "sheet": "Sheet1"
-        }
+    "unsc" : {
+      "ssId" : "1Uvr50O4xnMOWnP9z6ZO5i7gf5tQoa6GsD5zPixZIIBk",
+      "sheet": "Sheet1"
+    },
+    "unhrc" : {
+      "ssId" : "1Uvr50O4xnMOWnP9z6ZO5i7gf5tQoa6GsD5zPixZIIBk",
+      "sheet": "Sheet1"
+    },    
+    "aippm" : {
+      "ssId" : "1Uvr50O4xnMOWnP9z6ZO5i7gf5tQoa6GsD5zPixZIIBk",
+      "sheet": "Sheet1"
+    },
+    "disec" : {
+      "ssId" : "1Uvr50O4xnMOWnP9z6ZO5i7gf5tQoa6GsD5zPixZIIBk",
+      "sheet": "Sheet1"
+    },
+    "hcc" : {
+      "ssId" : "1Uvr50O4xnMOWnP9z6ZO5i7gf5tQoa6GsD5zPixZIIBk",
+      "sheet": "Sheet1"
+    },
+    "oic" : {
+      "ssId" : "1Uvr50O4xnMOWnP9z6ZO5i7gf5tQoa6GsD5zPixZIIBk",
+      "sheet": "Sheet1"
+    },
+    "arl" : {
+      "ssId" : "1Uvr50O4xnMOWnP9z6ZO5i7gf5tQoa6GsD5zPixZIIBk",
+      "sheet": "Sheet1"
+    },
+    "loksb" : {
+      "ssId" : "1Uvr50O4xnMOWnP9z6ZO5i7gf5tQoa6GsD5zPixZIIBk",
+      "sheet": "Sheet1"
     }
+  }
 }

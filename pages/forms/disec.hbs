@@ -1,0 +1,212 @@
+{{>header}}
+
+<p id="__color__" hidden="true"></p>
+<p id="__bgcolor__" hidden="true"></p>
+
+<div class="container">
+  <form action="/_register/disec" method="POST" name="unga" class="container card" style="padding: 2em; margin: auto">
+    <nav style="box-shadow: none;">
+      <div class="nav-wrapper blue" style="margin: -2em;">
+        <h6 class="brand-logo center" style="font-weight: 600; font-size: 1.5em;">JMIMUN 2019</h6>
+      </div>
+    </nav>
+
+    {{!-- // Section 1 // Introduction // --}}
+    <section class="section" id ="s1" style = "display:block">
+      <h2>JMIMUN 2019 | Disarmmament and Security Committee</h2>
+      <p>
+        Please answer all questions honestly and to the full extent of your knowledge. The Secretariat reserves the right to cancel your selection 
+        if any of your answers are found to be deliberately false.<br><br>
+
+        <div class="band">Instructions</div>
+        Consider following definitions while filling the "CATEGORY" column in the form.<br><br>
+        Domestic : Those participants who are residing and pursuing their education in India.<br>
+        NRI ( Non Resident Indian ) : Indian citizens pursuing their education from abroad.<br>
+        Foreign National : All Delegates who do not hold the Indian citizenship.<br><br>
+        REGISTRATION FEE DETAILS:<br>
+        Rs. 1200 INR per delegate ( For Domestic Delegates )<br>
+        $ 85 USD per delegate ( For NRI and Foreign national categories )<br><br>
+        Processes Involved:
+        <ol>
+          <li>Registration rounds are opened by the secretariat.</li>
+          <li>Applicant fills the registration form.</li>
+          <li>Registration round gets over.</li>
+          <li>Allotments of positions are done by the secretariat to the qualified applicants.</li>
+          <li>Applicants get a time slab of 3 days to log in to their portals and make the payment. As an applicant makes the  payment, 
+            their respective seats get booked and the respective committee and position gets confirmed.</li>
+        </ol>
+      </p>
+
+      <p><label>
+        <input class="with-gap" name="category" value="Domestic" type="radio"/>
+        <span>Domestic</span>
+      </label></p>
+
+      <p><label>
+        <input class="with-gap" name="category" value="NRI" type="radio" />
+        <span>NRI</span>
+      </label></p>
+
+      <p><label>
+        <input class="with-gap" name="category" value="Foreign National" type="radio" />
+        <span>Foreign National</span>
+      </label></p>
+
+      <button class="btn-flat waves-effect grey" type="button" onclick="showNext()">NEXT</button>
+    </section>
+    
+    {{!----------========== // Section 2 // About You // ==========----------}}
+    <section class="section" id="s2" style="display:none">
+      <h2>About You</h2>
+      <h3>Personal Details</h3>
+        <div class="question">
+          <h5>Name</h5>
+          <p class="description">Please enter your FULL NAME in BLOCK LETTERS/CAPITAL LETTERS</p>
+          <input type="text" name="name" placeholder="Name"><br>
+        </div>
+        
+        <div class="question">
+          <h5>Institution</h5>
+          <p class="description">Name of your Institution</p>
+          <input type="text" name="inst" placeholder="Institution"><br>
+        </div>
+
+        <div class="question">
+          <h5>Type of Institution</h5>
+          <p class="description">Where do you study/work?</p>
+          <p><label>
+            <input class="with-gap" name="instType" value="School" type="radio">
+            <span>School</span>
+          </label></p>
+          <p><label>
+            <input class="with-gap" name="instType" value="College" type="radio">
+            <span>College</span>
+          </label></p>
+          <p><label>
+            <input class="with-gap" name="instType" value="University" type="radio">
+            <span>University</span>
+          </label></p>
+          <p><label>
+            <input class="with-gap" name="instType" value="Other" type="radio">
+            <span>Other</span>
+            <input class="inline" type="text" name="instTypeo" placeholder="Please specify">
+          </label></p>
+        </div>
+        
+        <div class="question">
+          <h5>Age</h5>
+          <p class="description">Please enter your age.</p>
+          <input type="number" max="10" name="age" placeholder="Age">
+        </div>
+        
+        <div class="question">
+          <h5>Email</h5>
+          <p class="description">This email address will be the primary means of contact between the Secretariat and you. 
+            You will receive a confirmation email after completion of registration on this address.</p>
+          <input type="text" name="email" required="true" placeholder="Email address">
+        </div>
+        
+        <div class="question">
+          <h5>Phone/Contact Number</h5>
+          <p class="description">Please enter the full mobile number, i.e including the country code.</p>
+          <input type="text" name="phone" required="true" placeholder="Mobile Number">
+        </div>
+
+        <div class="question">
+          <h5>Accommodation</h5>
+          <p class="description">Do you require accommodation?</p>
+          <p><label>
+            <input class="with-gap" name="accommodation" value="YES" type="radio" required="true">
+            <span>Yes</span>
+          </label></p>
+
+          <p><label>
+            <input class="with-gap" name="accommodation" value="No" type="radio" required="true">
+            <span>No</span>
+          </label></p>
+        </div>
+
+        <div class="question">
+          <h5>Passport Number</h5>
+          <p class="description">Kindly provide your Passport number if you belong to the "NRI" or "Foreign National" category. 
+            NOTE: Domestic delegates need not provide their passport number.</p>
+          <input type="text" name="passport" placeholder="Passport Number">
+        </div>
+
+        <div class="question">
+          <h5>Campus Ambassador Referral Code (if any)</h5>
+          <p class="description">Only for those registering through a Campus Ambassador</p>
+          <input type="text" name="ca_code" placeholder="CA Code">
+        </div>
+
+      <button class="btn-flat waves-effect grey" type="button" onclick="showPrev()">BACK</button>
+      <button class="btn-flat waves-effect grey" type="button" onclick="showNext()">NEXT</button>
+  </section>
+  
+  {{!-- // Section 3 // Position Preferences // --}}
+  <section class="section" id="s3" style="display:none">
+    <h2>Preferences</h2>
+
+    In the position preferences section, please select a position from those available for this committee.<br>
+    You can check positions on <a href="https://jmimun.net/resources">the resources page</a><br><br>
+
+    <div class="question">
+      <h5>Your MUN experience</h5>
+      <p class="description">
+        Please enter the number of Model UN conferences you have attended as a delegate. 
+        This will help us allot you a country appropriate to your experience.
+      </p>
+      <input type="number" max="10" name="xp" id="xp" placeholder="Number of MUNs">
+    </div>
+
+    <div class="question">
+      <h5>Mention your past MUN experiences in Detail</h5>
+      <p class="description">If you don't have past prior relevant experience, write NA.</p>
+      <input type="text" name="xpDetail" placeholder="Experience">
+    </div>
+    
+    <h3>Position Preferences</h3>
+    
+    Position Preference 1<br>
+    <input type="text" name="pref1" placeholder="Portfolio"><br><br>
+    
+    Position Preference 2<br>
+    <input type="text" name="pref2" placeholder="Portfolio"><br><br>
+
+    Position Preference 3<br>
+    <input type="text" name="pref3" placeholder="Portfolio"><br><br>
+
+    <button class="btn-flat waves-effect grey" type="button" onclick="showPrev()">BACK</button>
+    <button class="btn-flat waves-effect grey" type="button" onclick="showNext()">NEXT</button>
+  </section>
+    
+    {{!-- // Section 4 // Payment // --}}
+    <section class="section" id="s4" style="display:none">
+      <h2>Payment</h2>
+      There is a basic REGISTRATION FEE of Rs. 1200 INR per delegate ( For Domestic Delegates ) and $ 85 USD per delegate ( For NRI and Foreign national categories )<br>
+      NOTE: The delegate fee is exclusive of taxes and transaction charge.<br>
+      After you have registered, the Secretariat will review your application and allot you a position.<br>
+      In order to check the position allotted to you, visit www.jmimun.net/allotments after the round in which you are applying gets over.<br>
+      On this page, you will be required to enter your registration number and password, both of which will be emailed to you after completion of registration, 
+      and you will be shown the position you have been allotted. The same page will contain the payment information<br><br>
+
+      <h5>Do you agree to the payment?</h5><br>
+      Do you agree to the terms of payment? Keep in mind that selecting NO may lead to cancellation of your application.<br>
+
+      <p><label>
+        <input type="radio" class="with-gap" name="payment" value="YES">
+        <span>YES</span><br>
+      </label></p>
+
+      <p><label>
+        <input type="radio" class="with-gap" name="payment" value="NO">
+        <span>NO</span><br>
+      </label></p>
+      
+      <button class="btn-flat waves-effect grey" type="button" onclick="showPrev()">BACK</button>
+      <input class="btn-large waves-effect waves-light blue" type="submit" style="float:right"><br>
+    </section>
+  </form>
+</div>
+
+{{>footer }}

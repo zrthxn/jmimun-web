@@ -1,0 +1,40 @@
+{
+  "regRefs": {
+    "unga" : {
+      "ref" : 0,
+      "suffix": "UGA"
+    },
+    "unsc" : {
+      "ref" : 0,
+      "suffix": "USC"
+    },
+    "unhrc" : {
+      "ref" : 0,
+      "suffix": "HRC"
+    },    
+    "aippm" : {
+      "ref" : 0,
+      "suffix": "PPM"
+    },
+    "disec" : {
+      "ref" : 0,
+      "suffix": "DIS"
+    },
+    "hcc" : {
+      "ref" : 0,
+      "suffix": "HCC"
+    },
+    "oic" : {
+      "ref" : 0,
+      "suffix": "OIC"
+    },
+    "arl" : {
+      "ref" : 0,
+      "suffix": "ARL"
+    },
+    "loksb" : {
+      "ref" : 0,
+      "suffix": "LS"
+    }
+  }
+}

@@ -45,17 +45,6 @@ jmimun.listen(PORT, ()=>{
 // // homepage.use('/register/payment/', express.static( path.join(__dirname, 'bookings', 'build') ))
 // // homepage.use('/register/cancel', express.static( path.join(__dirname, 'bookings', 'build') ))
 
-// homepage.set('views', path.join(__dirname, 'homepage'))
-// homepage.set('view engine', 'hbs')
-// homepage.engine('hbs', hbs({
-//     defaultLayout: 'main',
-//     extname: 'hbs',
-//     layoutsDir: __dirname + '/homepage/layouts',
-//     partialsDir: [
-//         __dirname + '/homepage/partials'
-//     ]
-// }))
-
 register.set('views', path.join(__dirname, 'pages', 'forms'))
 register.set('view engine', 'hbs')
 register.engine('hbs', hbs({
@@ -70,10 +59,35 @@ register.engine('hbs', hbs({
 register.get('/unga', (req,res) =>{
     res.render('unga', { 'title': 'General Assembly Delegate Form | JMI International MUN 2019' })
 })
+register.get('/loksb', (req,res) =>{
+    res.render('loksb', { 'title': 'Lok Sabha Delegate Form | JMI International MUN 2019' })
+})
+register.get('/aippm', (req,res) =>{
+    res.render('aippm', { 'title': 'AIPPM Delegate Form | JMI International MUN 2019' })
+})
+register.get('/disec', (req,res) =>{
+    res.render('disec', { 'title': 'UNGA DISEC Delegate Form | JMI International MUN 2019' })
+})
+register.get('/oic', (req,res) =>{
+    res.render('oic', { 'title': 'OIC Delegate Form | JMI International MUN 2019' })
+})
+register.get('/hcc', (req,res) =>{
+    res.render('hcc', { 'title': 'Crisis Committee Delegate Form | JMI International MUN 2019' })
+})
+register.get('/unsc', (req,res) =>{
+    res.render('unsc', { 'title': 'Security Council Delegate Form | JMI International MUN 2019' })
+})
+register.get('/unhrc', (req,res) =>{
+    res.render('unhrc', { 'title': 'Human Rights Council Delegate Form | JMI International MUN 2019' })
+})
+register.get('/arl', (req,res) =>{
+    res.render('arl', { 'title': 'Arab League Delegate Form | JMI International MUN 2019' })
+})
 
+// REGISTRATION HANDLER --------------------------------------------------
 register.post('/_register/:comm', (req,res) => {
     let { comm } = req.params
-    if(req.body!=null) {
+    if(req.body!==null) {
         let data = req.body
         GSheets.AppendToSpreadsheet([{
             ssId : config.Sheets[comm].ssId,
@@ -90,15 +104,18 @@ register.post('/_register/:comm', (req,res) => {
                 to: data.email,
                 from: "thatazimjaved@gmail.com",
                 subject: "Registration received - Number"
-            }, "Registration received", [
-                { id: '', data: '' }
+            }, 
+            fs.readFileSync('./email/templates/confirmation.html'),
+            [
+                { id: '', data: '' },
+                { id: '', data: '' },
+                { id: '', data: '' },
+                { id: '', data: '' },
             ]).then(()=>{
                 res.render('success', { 'title': "Success | JMI International MUN 2019" })
-                res.sendStatus(200);
             })
         })
     } else {
-        res.render('error', {'title': 'Error | JMI International MUN 2019'})
-        res.sendStatus(500)
+        res.status(500).render('error', {'title': 'Error | JMI International MUN 2019'})
     }
 })
