@@ -89,6 +89,7 @@ register.post('/_register/:comm', (req,res) => {
     let { comm } = req.params
     if(req.body!==null) {
         let data = req.body
+        let rgn
         GSheets.AppendToSpreadsheet([{
             ssId : config.Sheets[comm].ssId,
             range: config.Sheets[comm].sheet,
@@ -112,7 +113,10 @@ register.post('/_register/:comm', (req,res) => {
                 { id: '', data: '' },
                 { id: '', data: '' },
             ]).then(()=>{
-                res.render('success', { 'title': "Success | JMI International MUN 2019" })
+                res.render('success', { 
+                    'title': "Success | JMI International MUN 2019",
+                    'rgn': rgn
+                })
             })
         })
     } else {
