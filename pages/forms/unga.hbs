@@ -11,7 +11,7 @@
 </style>
 
 <div class="container">
-  <form action="/_register/unga" method="POST" name="unga" class="container card" style="padding: 2em; margin: auto">
+  <form method="POST" name="unga" class="container card" style="padding: 2em; margin: auto">
     <div class="band"></div>
 
     {{!-- // Section 1 // Introduction // --}}
@@ -99,7 +99,7 @@
         <div class="question">
           <h5>Age</h5>
           <p class="description">Please enter your age.</p>
-          <input type="number" max="10" name="age" placeholder="Age">
+          <input type="number" name="age" placeholder="Age">
         </div>
         
         <div class="question">
@@ -124,7 +124,7 @@
           </label></p>
 
           <p><label>
-            <input class="with-gap" name="accommodation" value="No" type="radio" required="true">
+            <input class="with-gap" name="accommodation" value="NO" type="radio" required="true">
             <span>No</span>
           </label></p>
         </div>
@@ -159,7 +159,7 @@
         Please enter the number of Model UN conferences you have attended as a delegate. 
         This will help us allot you a country appropriate to your experience.
       </p>
-      <input type="number" max="10" name="xp" id="xp" placeholder="Number of MUNs">
+      <input type="number" name="xp" id="xp" placeholder="Number of MUNs">
     </div>
 
     <div class="question">
@@ -207,7 +207,7 @@
       </label></p>
       
       <button class="btn-flat waves-effect grey" type="button" onclick="showPrev()">BACK</button>
-      <input class="btn-large waves-effect waves-light blue" type="submit" style="float:right"><br>
+      <input class="btn-large waves-effect waves-light blue" type="submit" style="float:right" formaction="/_register/single/unga"><br>
     </section>
   </form>
 </div>

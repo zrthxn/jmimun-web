@@ -1,40 +1,38 @@
 {
-  "regRefs": {
-    "unga" : {
-      "ref" : 0,
-      "suffix": "UGA"
-    },
-    "unsc" : {
-      "ref" : 0,
-      "suffix": "USC"
-    },
-    "unhrc" : {
-      "ref" : 0,
-      "suffix": "HRC"
-    },    
-    "aippm" : {
-      "ref" : 0,
-      "suffix": "PPM"
-    },
-    "disec" : {
-      "ref" : 0,
-      "suffix": "DIS"
-    },
-    "hcc" : {
-      "ref" : 0,
-      "suffix": "HCC"
-    },
-    "oic" : {
-      "ref" : 0,
-      "suffix": "OIC"
-    },
-    "arl" : {
-      "ref" : 0,
-      "suffix": "ARL"
-    },
-    "loksb" : {
-      "ref" : 0,
-      "suffix": "LS"
-    }
+  "unga": {
+    "ref": 108,
+    "suffix": "UGA"
+  },
+  "unsc": {
+    "ref": 41,
+    "suffix": "USC"
+  },
+  "unhrc": {
+    "ref": 45,
+    "suffix": "HRC"
+  },
+  "aippm": {
+    "ref": 63,
+    "suffix": "PPM"
+  },
+  "disec": {
+    "ref": 32,
+    "suffix": "DIS"
+  },
+  "hc": {
+    "ref": 32,
+    "suffix": "HC"
+  },
+  "oic": {
+    "ref": 52,
+    "suffix": "OIC"
+  },
+  "arl": {
+    "ref": 27,
+    "suffix": "ARL"
+  },
+  "loksb": {
+    "ref": 144,
+    "suffix": "LS"
   }
 }
