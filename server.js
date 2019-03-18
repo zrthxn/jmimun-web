@@ -38,6 +38,7 @@ jmimun.listen(PORT, ()=>{
     console.log("Started")
 })
 
+const regPrefix = 'RGN-JMC2019DEL'
 // // Static Served Directories
 // homepage.use('/static', express.static( path.join(__dirname, 'pages', 'static') ))
 // // homepage.use('/register', express.static( path.join(__dirname, 'bookings', 'build') ))
@@ -85,26 +86,41 @@ register.get('/arl', (req,res) =>{
 })
 
 // REGISTRATION HANDLER --------------------------------------------------
+
 register.post('/_register/:comm', (req,res) => {
     let { comm } = req.params
+    console.log(comm)
     if(req.body!==null) {
         let data = req.body
-        let rgn
+        if(comm==='unsc' || comm==='unhrc' || comm==='arl'){
+            _values = [ data.category, data.name_1, data.inst_1, data.instType_1, data.instTypeo_1, 
+                        data.age_1, data.email_1, data.phone_1, 
+                        data.accomodation_1, data.passport_1, data.ca_code_1,
+                        data.name_1, data.inst_2, data.instType_2, data.instTypeo_2, 
+                        data.age_2, data.email_2, data.phone_2, 
+                        data.accomodation_2, data.passport_2, data.ca_code_2,
+                        data.xp, data.xpDetail, data.pref1, data.pref2, data.pref3, data.payment ]
+        }
+        else if(comm==='loksb' || comm==='hcc' || comm==='disec' || comm==='oic' || comm==='aippm' || comm==='unga'){
+            _values = [ data.category, data.name, data.inst, data.instType, data.instTypeo, 
+                        data.age, data.email, data.phone, 
+                        data.accomodation, data.passport, 
+                        data.ca_code, data.xp, 
+                        data.xpDetail, data.pref1, data.pref2, data.pref3, data.payment ]
+        }
+        let regConfig = JSON.parse(fs.readFileSync('./registrations/register.json').toString())
+        let rgn = regPrefix + regConfig[comm].ref + regConfig[comm].suffix
+        regConfig[comm].ref++
+        fs.writeFileSync('./registrations/register.json', JSON.stringify(regConfig, null, 2))
         GSheets.AppendToSpreadsheet([{
             ssId : config.Sheets[comm].ssId,
             range: config.Sheets[comm].sheet,
-            values: [ 
-                data.category, data.inst, data.instTypeo, 
-                data.age, data.email, data.phone, 
-                data.accomodation, data.passport, 
-                data.campusAmbassador, data.xp, 
-                data.xpDetail, data.pref1, data.pref2, data.pref3, data.payemnt
-            ]
+            values: _values
         }]).then(()=>{
             Gmailer.SingleDataDelivery({
                 to: data.email,
                 from: "thatazimjaved@gmail.com",
-                subject: "Registration received - Number"
+                subject: "JMI International MUN 2019 | Registration received - " + rgn
             }, 
             fs.readFileSync('./email/templates/confirmation.html'),
             [
