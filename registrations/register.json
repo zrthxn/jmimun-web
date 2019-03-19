@@ -1,38 +1,38 @@
 {
   "unga": {
-    "ref": 108,
+    "ref": 114,
     "suffix": "UGA"
   },
   "unsc": {
-    "ref": 41,
+    "ref": 62,
     "suffix": "USC"
   },
   "unhrc": {
-    "ref": 45,
+    "ref": 64,
     "suffix": "HRC"
   },
   "aippm": {
-    "ref": 63,
+    "ref": 83,
     "suffix": "PPM"
   },
   "disec": {
-    "ref": 32,
+    "ref": 50,
     "suffix": "DIS"
   },
   "hc": {
-    "ref": 32,
+    "ref": 52,
     "suffix": "HC"
   },
   "oic": {
-    "ref": 52,
+    "ref": 70,
     "suffix": "OIC"
   },
   "arl": {
-    "ref": 27,
+    "ref": 47,
     "suffix": "ARL"
   },
   "loksb": {
-    "ref": 144,
+    "ref": 164,
     "suffix": "LS"
   }
 }
