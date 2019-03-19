@@ -73,8 +73,8 @@ register.get('/disec', (req,res) =>{
 register.get('/oic', (req,res) =>{
     res.render('oic', { 'title': 'OIC Delegate Form | JMI International MUN 2019' })
 })
-register.get('/hcc', (req,res) =>{
-    res.render('hcc', { 'title': 'Crisis Committee Delegate Form | JMI International MUN 2019' })
+register.get('/hc', (req,res) =>{
+    res.render('hc', { 'title': 'Crisis Committee Delegate Form | JMI International MUN 2019' })
 })
 register.get('/unsc', (req,res) =>{
     res.render('unsc', { 'title': 'Security Council Delegate Form | JMI International MUN 2019' })
