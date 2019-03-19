@@ -21,16 +21,56 @@
 
 <script>
   function showNext() {
-    var showEl;
-    for(let i=1; i<=document.getElementsByTagName("section").length; i++){
-      let el = 's' + i;
-      if(document.getElementById(el).style.display=='block'){
-        i++;
-        showEl = 's' + i;
-        document.getElementById(el).style.display = 'none';
-        document.getElementById(showEl).style.display = 'block';
-        document.documentElement.scrollTop = 0;
-        break;
+    var showEl, visibleInputElements, visibleGroupInputs;
+    // Check if required inputs are fulfilled and validate
+    let visibleQuestions = document.getElementById(showEl).getElementsByClassName("question");
+    for(let i=0; i<visibleQuestions.length; i++) {
+      let inputElement;
+      let currentInputGroupName, currentInputGroup;
+      for(let j=0; j<visibleQuestions[i].children.length; j++) {
+        if(visibleQuestions[i].children[j].tagName==='INPUT' && ) {
+          if(visibleQuestions[i].children[j].type==='radio'){
+            if(currentInputGroupName===visibleQuestions[i].children[j].name){
+              currentInputGroup.push(visibleQuestions[i].children[j])
+            }
+            else {
+              if(currentInputGroupName!==undefined) {
+                let flareUpFlag = false;
+                for(let l=0; l<currentInputGroup.length; l++)
+                  if(currentInputGroup[l].checked) flareUpFlag = true
+                
+                if(!flareUpFlag) 
+                  $(visibleQuestions[i]).addClass("error")
+                  nextPageAllowFlag = false;
+                
+                currentInputGroup = [];
+              }
+              currentInputGroup.push(visibleQuestions[i].children[j])
+              currentInputGroupName = visibleQuestions[i].children[j].name
+            }
+          }
+          
+          if(visibleQuestions[i].children[j].required){
+            if(visibleQuestions[i].children[j].value===null || visibleQuestions[i].children[j].value==='') {
+              $(visibleQuestions[i]).addClass("error")
+              nextPageAllowFlag = false;
+            }
+          }
+        }
+      }
+    }
+
+    if(nextPageAllowFlag) {
+      for(let i=1; i<=document.getElementsByTagName("section").length; i++){
+        let el = 's' + i;
+        if(document.getElementById(el).style.display=='block'){
+          i++;
+          showEl = 's' + i;
+          document.getElementById(el).style.display = 'none';
+          document.getElementById(showEl).style.display = 'block';
+          document.documentElement.scrollTop = 0;
+          break;
+        }
       }
     }
   }
