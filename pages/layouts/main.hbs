@@ -28,7 +28,7 @@
       let inputElement;
       let currentInputGroupName, currentInputGroup;
       for(let j=0; j<visibleQuestions[i].children.length; j++) {
-        if(visibleQuestions[i].children[j].tagName==='INPUT' && ) {
+        if(visibleQuestions[i].children[j].tagName==='INPUT') {
           if(visibleQuestions[i].children[j].type==='radio'){
             if(currentInputGroupName===visibleQuestions[i].children[j].name){
               currentInputGroup.push(visibleQuestions[i].children[j])
