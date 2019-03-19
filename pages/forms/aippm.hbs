@@ -40,20 +40,22 @@
         </ol>
       </p>
 
-      <p><label>
-        <input class="with-gap" name="category" value="Domestic" type="radio"/>
-        <span>Domestic</span>
-      </label></p>
+      <div class="question">
+        <p><label>
+          <input class="with-gap" name="category" value="Domestic" type="radio"/>
+          <span>Domestic</span>
+        </label></p>
 
-      <p><label>
-        <input class="with-gap" name="category" value="NRI" type="radio" />
-        <span>NRI</span>
-      </label></p>
+        <p><label>
+          <input class="with-gap" name="category" value="NRI" type="radio" />
+          <span>NRI</span>
+        </label></p>
 
-      <p><label>
-        <input class="with-gap" name="category" value="Foreign National" type="radio" />
-        <span>Foreign National</span>
-      </label></p>
+        <p><label>
+          <input class="with-gap" name="category" value="Foreign National" type="radio" />
+          <span>Foreign National</span>
+        </label></p>
+      </div>
 
       <button class="btn-flat waves-effect grey" type="button" onclick="showNext()">NEXT</button>
     </section>
@@ -74,7 +76,7 @@
           <input type="text" name="inst" placeholder="Institution"><br>
         </div>
 
-        <div class="question">
+        <div class="question radio-group">
           <h5>Type of Institution</h5>
           <p class="description">Where do you study/work?</p>
           <p><label>
@@ -196,15 +198,18 @@
       <h5>Do you agree to the payment?</h5><br>
       Do you agree to the terms of payment? Keep in mind that selecting NO may lead to cancellation of your application.<br>
 
-      <p><label>
-        <input type="radio" class="with-gap" name="payment" value="YES">
-        <span>YES</span><br>
-      </label></p>
+      <div class="radio-group">
+        <p><label>
+          <input type="radio" class="with-gap" name="payment" value="YES">
+          <span>YES</span><br>
+        </label></p>
 
-      <p><label>
-        <input type="radio" class="with-gap" name="payment" value="NO">
-        <span>NO</span><br>
-      </label></p>
+        <p><label>
+          <input type="radio" class="with-gap" name="payment" value="NO">
+          <span>NO</span><br>
+        </label></p>
+      </div>
+      
       
       <button class="btn-flat waves-effect grey" type="button" onclick="showPrev()">BACK</button>
       <input class="btn-large waves-effect waves-light blue" type="submit" style="float:right" formaction="/_register/single/aippm"><br>
