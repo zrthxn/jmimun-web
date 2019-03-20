@@ -22,59 +22,47 @@
 <script>
   function showNext() {
     var showEl, visibleInputElements, visibleGroupInputs, nextPageAllowFlag = true;
+    for(let i=1; i<=document.getElementsByTagName("section").length; i++){
+      if(document.getElementById('s'+i).style.display==='block'){
+        showEl = 's' + i;
+        break;
+      }
+    }
     // Check if required inputs are fulfilled and validate
-    //let visibleQuestions = document.getElementById(showEl).getElementsByClassName("question");
-    //for(let i=0; i<visibleQuestions.length; i++) {
-    //  let inputElement;
-    //  let currentInputGroupName, currentInputGroup;
-    // for(let j=0; j<visibleQuestions[i].children.length; j++) {
-    //    if(visibleQuestions[i].children[j].tagName==='INPUT') {
-    //      if(visibleQuestions[i].children[j].required){
-    //        if(visibleQuestions[i].children[j].value===null || visibleQuestions[i].children[j].value==='') {
-    //          $(visibleQuestions[i]).addClass("error")
-    //          nextPageAllowFlag = false;
-    //        }
-    //      }
-    //    }
-    //  }
-    //}
+    let visibleQuestions = document.getElementById(showEl).getElementsByClassName("question");
+    for(let i=0; i<visibleQuestions.length; i++) {
+      for(let j=0; j<visibleQuestions[i].children.length; j++) {
+        if(visibleQuestions[i].children[j].tagName==='INPUT') {
+          if(visibleQuestions[i].children[j].required){
+            if(visibleQuestions[i].children[j].value===null || visibleQuestions[i].children[j].value==='') {
+              $(visibleQuestions[i]).addClass("error")
+              nextPageAllowFlag = false;
+            }
+          }
+        }
+      }
+    }
 
-    // let visibleRadioGroups = document.getElementById(showEl).getElementsByClassName("radio-group");
-//     for(let i=0; i<visibleRadioGroups.length; i++) {
-//       let inputElement;
-//       let currentInputGroupName, currentInputGroup;
-//       for(let j=0; j<visibleRadioGroups[i].children.length; j++) {
-//         if(visibleRadioGroups[i].children[j].tagName==='INPUT') {
-//           if(visibleRadioGroups[i].children[j].required){
-//             if(visibleRadioGroups[i].children[j].value===null || visibleRadioGroups[i].children[j].value==='') {
-//               $(visibleQuestions[i]).addClass("error")
-//               nextPageAllowFlag = false;
-//             }
-//           }
-//         }
-//       }
-//     }
+    let visibleRadioGroups = document.getElementById(showEl).getElementsByClassName("radio-group");
+    for(let i=0; i<visibleRadioGroups.length; i++) {
+      let currentInputGroupName = visibleRadioGroups[i].id, currentInputGroup = [], flareUpFlag = false;
+      for(let j=0; j<visibleRadioGroups[i].children.length; j++) {
+        if(visibleRadioGroups[i].children[j].className!=='radio-button') continue;
+        if(visibleRadioGroups[i].children[j].children[0].children[0].type==='radio') {
+          currentInputGroup.push(visibleRadioGroups[i].children[j].children[0].children[0])
+        }
+      }
+      
+      for(let l=0; l<currentInputGroup.length; l++)
+        if(currentInputGroup[l].checked) flareUpFlag = true
 
-//     if(visibleQuestions[i].children[j].type==='radio'){
-//       if(currentInputGroupName===visibleQuestions[i].children[j].name){
-//         currentInputGroup.push(visibleQuestions[i].children[j])
-//       }
-//       else {
-//         if(currentInputGroupName!==undefined) {
-//           let flareUpFlag = false;
-//           for(let l=0; l<currentInputGroup.length; l++)
-//             if(currentInputGroup[l].checked) flareUpFlag = true
-          
-//           if(!flareUpFlag) 
-//             $(visibleQuestions[i]).addClass("error")
-//             nextPageAllowFlag = false;
-          
-//           currentInputGroup = [];
-//         }
-//         currentInputGroup.push(visibleQuestions[i].children[j])
-//         currentInputGroupName = visibleQuestions[i].children[j].name
-//       }
-//     }
+      if(!flareUpFlag) {
+        $(visibleRadioGroups[i]).addClass("error")
+        nextPageAllowFlag = false;
+      }
+      
+      currentInputGroup = [];
+    }
 
     if(nextPageAllowFlag) {
       for(let i=1; i<=document.getElementsByTagName("section").length; i++){
@@ -115,7 +103,29 @@
     background-color: #eee;
   } .question h5 {
     font-weight: 600;
+  } .question[required='true'] h5::after{
+    content: '*';
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 400;
+    color: #ff0000;
   }
+
+  .radio-group {
+    padding: 1em;
+    transition: all 0.5s ease;
+  } .radio-group:active {
+    background-color: #eee;
+  } .radio-group h5 {
+    font-weight: 600;
+  } .radio-group[required='true'] h5::after{
+    content: '*';
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 400;
+    color: #ff0000;
+  }
+
   .description {
     font-size: 0.85em;
   }
@@ -124,6 +134,25 @@
     margin: 1em 0;
     font-weight: 600;
     font-size: 1.25em;
+  }
+  .error {
+    transition: all 0.5s ease;
+  } .error::after {
+    content: 'This question is required';
+    display: block;
+    font-size: 1em;
+    font-weight: 400;
+    color: #ff0000;
+  } @keyframes error {
+    0% {
+      background-color: transparent;
+    }
+    25% {
+      background-color: #ff000050;
+    }
+    100% {
+      background-color: transparent;
+    }
   }
 </style>
 </html>
