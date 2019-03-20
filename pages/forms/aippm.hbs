@@ -11,7 +11,7 @@
 </style>
 
 <div class="container">
-  <form method="POST" name="aippm" class="container card" style="padding: 2em; margin: auto">
+  <form action="/_register/single/aippm" method="POST" name="aippm" class="container card" style="padding: 2em; margin: auto" id="register-form">
     <div class="band"></div>
 
     {{!-- // Section 1 // Introduction // --}}
@@ -222,7 +222,7 @@
       
       
       <button class="btn-flat waves-effect grey" type="button" onclick="showPrev()">BACK</button>
-      <input class="btn-large waves-effect waves-light blue" type="submit" style="float:right" formaction="/_register/single/aippm"><br>
+      <button class="btn-large waves-effect waves-light blue" type="button" style="float:right" onclick="register()"><br>
     </section>
   </form>
 </div>
