@@ -93,7 +93,7 @@ register.post('/_register/:type/:comm', (req,res) => {
     let _values = []
 
     if(req.body!==null ) { 
-        if(req.cookies['rgnkey']===undefined) {
+        if(req.cookies['rgnkey-'+comm]===undefined) {
             let data = req.body
             for(let field in data) {
                 if(field===undefined) continue
@@ -151,7 +151,7 @@ register.post('/_register/:type/:comm', (req,res) => {
                     { id: 'rgn', data: rgn },
                     { id: 'pwd', data: pwd },
                 ]).then(()=>{
-                    res.cookie( 'rgnkey', rgn, { expires: new Date(Date.now()+1000000000000), httpOnly: true } )
+                    res.cookie( 'rgnkey-'+comm, rgn, { expires: new Date(Date.now()+1000000000000), httpOnly: true } )
                     res.render('success', {
                         'title': "Success | JMI International MUN 2019",
                         'rgn': rgn
@@ -161,7 +161,7 @@ register.post('/_register/:type/:comm', (req,res) => {
         } else {
             res.render('success', {
                 'title': "Success | JMI International MUN 2019",
-                'rgn': req.cookies['rgnkey']
+                'rgn': req.cookies['rgnkey-'+comm]
             })
         }
     } else {
