@@ -73,8 +73,8 @@ register.get('/disec', (req,res) =>{
 register.get('/oic', (req,res) =>{
     res.render('oic', { 'title': 'OIC Delegate Form | JMI International MUN 2019' })
 })
-register.get('/hcc', (req,res) =>{
-    res.render('hcc', { 'title': 'Crisis Committee Delegate Form | JMI International MUN 2019' })
+register.get('/hc', (req,res) =>{
+    res.render('hc', { 'title': 'Crisis Committee Delegate Form | JMI International MUN 2019' })
 })
 register.get('/unsc', (req,res) =>{
     res.render('unsc', { 'title': 'Security Council Delegate Form | JMI International MUN 2019' })
@@ -98,7 +98,7 @@ register.post('/_register/:type/:comm', (req,res) => {
             if(field===undefined) continue
             if(data[field]===undefined || data[field]===null) data[field] = ""
         }
-
+        let reciever
         if(type==='double'){
             _values = [ 
                 data.category, data.name_1, data.inst_1, data.instType_1,
@@ -109,6 +109,7 @@ register.post('/_register/:type/:comm', (req,res) => {
                 data.accomodation_2, data.passport_2, data.ca_code_2,
                 data.xp, data.xpDetail, data.pref1, data.pref2, data.pref3, data.payment
             ]
+            reciever = data.email_1
         } else if(type==='single'){
             _values = [ 
                 data.category, data.name, data.inst, data.instType,
@@ -117,6 +118,7 @@ register.post('/_register/:type/:comm', (req,res) => {
                 data.xp, 
                 data.pref1, data.pref2, data.pref3, data.payment, data.xpDetail, 
             ]
+            reciever = data.email
         }
         
         let regConfig = JSON.parse(fs.readFileSync('./registrations/register.json').toString())
@@ -135,7 +137,7 @@ register.post('/_register/:type/:comm', (req,res) => {
             values: _values
         }]).then(()=>{
             Gmailer.SingleDataDelivery({
-                to: data.email,
+                to: reciever,
                 from: "register.jmimun18@gmail.com",
                 subject: "Thank you for your Registration | JMI International MUN 2019"
             }, 
