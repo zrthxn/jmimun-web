@@ -92,67 +92,82 @@ register.post('/_register/:type/:comm', (req,res) => {
     let { comm, type } = req.params
     let _values = []
 
-    if(req.body!==null) {
-        let data = req.body
-        for(let field in data) {
-            if(field===undefined) continue
-            if(data[field]===undefined || data[field]===null) data[field] = ""
-        }
-        let reciever
-        if(type==='double'){
-            _values = [ 
-                data.category, data.name_1, data.inst_1, data.instType_1,
-                data.age_1, data.email_1, data.phone_1, 
-                data.accomodation_1, data.passport_1, data.ca_code_1,
-                data.name_1, data.inst_2, data.instType_2, data.instTypeo_2, 
-                data.age_2, data.email_2, data.phone_2, 
-                data.accomodation_2, data.passport_2, data.ca_code_2,
-                data.xp, data.xpDetail, data.pref1, data.pref2, data.pref3, data.payment
-            ]
-            reciever = data.email_1
-        } else if(type==='single'){
-            _values = [ 
-                data.category, data.name, data.inst, data.instType,
-                data.age, data.email, data.phone, 
-                data.accomodation, data.passport, data.ca_code, 
-                data.xp, 
-                data.pref1, data.pref2, data.pref3, data.payment, data.xpDetail, 
-            ]
-            reciever = data.email
-        }
-        
-        let regConfig = JSON.parse(fs.readFileSync('./registrations/register.json').toString())
-        regConfig[comm].ref++
-        let rgn = regPrefix + regConfig[comm].ref + regConfig[comm].suffix
-        let pwd = regConfig[comm].suffix + regConfig[comm].ref + '319'
+    if(req.body!==null ) { 
+        if(req.cookies['rgnkey']===undefined) {
+            let data = req.body
+            for(let field in data) {
+                if(field===undefined) continue
+                if(data[field]===undefined || data[field]===null) data[field] = ""
+            }
 
-        _values = [ Date.now(), ..._values, rgn, pwd ]
+            let regConfig = JSON.parse(fs.readFileSync('./registrations/register.json').toString())
+            regConfig[comm].ref++
+            let rgn = regPrefix + regConfig[comm].ref + regConfig[comm].suffix
+            let pwd = regConfig[comm].suffix + regConfig[comm].ref + '319'
+            
+            let reciever
+            if(type==='double'){
+                _values = [ 
+                    Date.now(), data.category, 
+                    data.name_1, data.inst_1, data.instType_1,
+                    data.age_1, data.email_1, data.phone_1, 
+                    data.accomodation_1, data.passport_1, data.ca_code_1,
 
-        fs.writeFileSync('./registrations/register.json', JSON.stringify(regConfig, null, 2))
+                    data.name_2, data.inst_2, data.instType_2,
+                    data.age_2, data.email_2, data.phone_2, 
+                    data.accomodation_2, data.passport_2, data.ca_code_2,
 
-        console.log(_values)
-        GSheets.AppendToSpreadsheet([{
-            ssId : ServerConfig.Sheets[comm].ssId,
-            sheet: ServerConfig.Sheets[comm].sheet,
-            values: _values
-        }]).then(()=>{
-            Gmailer.SingleDataDelivery({
-                to: reciever,
-                from: "register.jmimun18@gmail.com",
-                subject: "Thank you for your Registration | JMI International MUN 2019"
-            }, 
-            fs.readFileSync('./email/templates/confirmation.htm').toString(),
-            [
-                { id: 'rgn', data: rgn },
-                { id: 'pwd', data: pwd },
-            ]).then(()=>{
-                res.render('success', { 
-                    'title': "Success | JMI International MUN 2019",
-                    'rgn': rgn
+                    data.xp_1, data.xp_2, data.xpDetail, data.pref1, data.pref2, data.pref3, 
+                    data.payment, rgn, pwd
+                ]
+                reciever = data.email_1
+            } else if(type==='single'){
+                _values = [ 
+                    Date.now(), data.category, 
+                    data.name, data.inst, data.instType,
+                    data.age, data.email, data.phone, 
+                    data.accomodation, data.passport, data.ca_code, 
+                    data.xp, data.xpDetail, data.pref1, data.pref2, data.pref3,
+                    data.payment, rgn, pwd
+                ]
+                reciever = data.email
+            }
+
+            fs.writeFileSync('./registrations/register.json', JSON.stringify(regConfig, null, 2))
+
+            console.log(_values)
+            GSheets.AppendToSpreadsheet([{
+                ssId : ServerConfig.Sheets[comm].ssId,
+                sheet: ServerConfig.Sheets[comm].sheet,
+                values: _values
+            }]).then(()=>{
+                Gmailer.SingleDataDelivery({
+                    to: reciever,
+                    from: "register.jmimun18@gmail.com",
+                    subject: "Thank you for your Registration | JMI International MUN 2019"
+                }, 
+                fs.readFileSync('./email/templates/confirmation.htm').toString(),
+                [
+                    { id: 'rgn', data: rgn },
+                    { id: 'pwd', data: pwd },
+                ]).then(()=>{
+                    res.cookie( 'rgnkey', rgn, { expires: new Date(Date.now()+1000000000000), httpOnly: true } )
+                    res.render('success', {
+                        'title': "Success | JMI International MUN 2019",
+                        'rgn': rgn
+                    })
                 })
             })
-        })
+        } else {
+            res.render('success', {
+                'title': "Success | JMI International MUN 2019",
+                'rgn': req.cookies['rgnkey']
+            })
+        }
     } else {
-        res.status(500).render('error', {'title': 'Error | JMI International MUN 2019'})
+        res.status(500).render('error', {
+            'title': 'Error | JMI International MUN 2019',
+            'err': 'There was an internal error. Please try again.'
+        })
     }
 })

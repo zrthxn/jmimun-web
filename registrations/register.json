@@ -1,10 +1,10 @@
 {
   "unga": {
-    "ref": 114,
+    "ref": 117,
     "suffix": "UGA"
   },
   "unsc": {
-    "ref": 62,
+    "ref": 68,
     "suffix": "USC"
   },
   "unhrc": {
@@ -32,7 +32,7 @@
     "suffix": "ARL"
   },
   "loksb": {
-    "ref": 164,
+    "ref": 167,
     "suffix": "LS"
   }
 }

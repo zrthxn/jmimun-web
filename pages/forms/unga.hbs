@@ -157,13 +157,13 @@
     In the position preferences section, please select a position from those available for this committee.<br>
     You can check positions on <a href="https://jmimun.net/resources">the resources page</a><br><br>
 
-    <div class="question">
+    <div class="question" required="true">
       <h5>Your MUN experience</h5>
       <p class="description">
         Please enter the number of Model UN conferences you have attended as a delegate. 
         This will help us allot you a country appropriate to your experience.
       </p>
-      <input type="number" name="xp" id="xp" placeholder="Number of MUNs">
+      <input type="number" name="xp" id="xp" placeholder="Number of MUNs" required="true">
     </div>
 
     <div class="question">
@@ -173,15 +173,21 @@
     </div>
     
     <h3>Position Preferences</h3>
-    
-    Position Preference 1<br>
-    <input type="text" name="pref1" placeholder="Portfolio"><br><br>
-    
-    Position Preference 2<br>
-    <input type="text" name="pref2" placeholder="Portfolio"><br><br>
 
-    Position Preference 3<br>
-    <input type="text" name="pref3" placeholder="Portfolio"><br><br>
+    <div class="question" required="true">
+      Position Preference 1<br>
+      <input type="text" name="pref1" placeholder="Portfolio" required="true">
+    </div>
+
+    <div class="question" required="true">
+      Position Preference 2<br>
+      <input type="text" name="pref2" placeholder="Portfolio" required="true">
+    </div>
+    
+    <div class="question">
+      Position Preference 3<br>
+      <input type="text" name="pref3" placeholder="Portfolio">
+    </div>
 
     <button class="btn-flat waves-effect grey" type="button" onclick="showPrev()">BACK</button>
     <button class="btn-flat waves-effect grey" type="button" onclick="showNext()">NEXT</button>
@@ -197,18 +203,24 @@
       On this page, you will be required to enter your registration number and password, both of which will be emailed to you after completion of registration, 
       and you will be shown the position you have been allotted. The same page will contain the payment information<br><br>
 
-      <h5>Do you agree to the payment?</h5><br>
-      Do you agree to the terms of payment? Keep in mind that selecting NO may lead to cancellation of your application.<br>
 
-      <p class="radio-button"><label>
-        <input type="radio" class="with-gap" name="payment" value="YES">
-        <span>YES</span><br>
-      </label></p>
+      <div class="radio-group" required="true">
+        <h5>Do you agree to the payment?</h5>
+        <p class="description">
+          Do you agree to the terms of payment? Keep in mind that selecting NO may lead to cancellation of your application.
+        </p>
+        
+        <p class="radio-button"><label>
+          <input type="radio" class="with-gap" name="payment" value="YES">
+          <span>YES</span><br>
+        </label></p>
 
-      <p class="radio-button"><label>
-        <input type="radio" class="with-gap" name="payment" value="NO">
-        <span>NO</span><br>
-      </label></p>
+        <p class="radio-button"><label>
+          <input type="radio" class="with-gap" name="payment" value="NO">
+          <span>NO</span><br>
+        </label></p>
+      </div>
+      
       
       <button class="btn-flat waves-effect grey" type="button" onclick="showPrev()">BACK</button>
       <input class="btn-large waves-effect waves-light blue" type="submit" style="float:right" formaction="/_register/single/unga"><br>

@@ -40,18 +40,20 @@
         </ol>
       </p>
 
-      <div class="question">
-        <p><label>
+      <div class="radio-group" id="category" required="true">
+        <h5>Category</h5>
+        <p class="description">Select your category</p>
+        <p class="radio-button"><label>
           <input class="with-gap" name="category" value="Domestic" type="radio"/>
           <span>Domestic</span>
         </label></p>
 
-        <p><label>
+        <p class="radio-button"><label>
           <input class="with-gap" name="category" value="NRI" type="radio" />
           <span>NRI</span>
         </label></p>
 
-        <p><label>
+        <p class="radio-button"><label>
           <input class="with-gap" name="category" value="Foreign National" type="radio" />
           <span>Foreign National</span>
         </label></p>
@@ -64,69 +66,69 @@
     <section class="section" id="s2" style="display:none">
       <h2>About You</h2>
       <h3>Personal Details</h3>
-        <div class="question">
+        <div class="question" required="true">
           <h5>Name</h5>
           <p class="description">Please enter your FULL NAME in BLOCK LETTERS/CAPITAL LETTERS</p>
-          <input type="text" name="name" placeholder="Name"><br>
+          <input type="text" name="name" placeholder="Name" required="true"><br>
         </div>
         
-        <div class="question">
+        <div class="question" required="true">
           <h5>Institution</h5>
           <p class="description">Name of your Institution</p>
-          <input type="text" name="inst" placeholder="Institution"><br>
+          <input type="text" name="inst" placeholder="Institution" required="true"><br>
         </div>
 
-        <div class="question radio-group">
+        <div class="radio-group" required="true">
           <h5>Type of Institution</h5>
           <p class="description">Where do you study/work?</p>
-          <p><label>
+          <p class="radio-button"><label>
             <input class="with-gap" name="instType" value="School" type="radio">
             <span>School</span>
           </label></p>
-          <p><label>
+          <p class="radio-button"><label>
             <input class="with-gap" name="instType" value="College" type="radio">
             <span>College</span>
           </label></p>
-          <p><label>
+          <p class="radio-button"><label>
             <input class="with-gap" name="instType" value="University" type="radio">
             <span>University</span>
           </label></p>
-          <p><label>
+          <p class="radio-button"><label>
             <input class="with-gap" name="instType" value="Other" type="radio">
             <span>Other</span>
             <input class="inline" type="text" name="instTypeo" placeholder="Please specify">
           </label></p>
         </div>
         
-        <div class="question">
+        <div class="question" required="true">
           <h5>Age</h5>
           <p class="description">Please enter your age.</p>
-          <input type="number" name="age" placeholder="Age">
+          <input type="number" name="age" placeholder="Age" required="true">
         </div>
         
-        <div class="question">
+        <div class="question" required="true">
           <h5>Email</h5>
           <p class="description">This email address will be the primary means of contact between the Secretariat and you. 
             You will receive a confirmation email after completion of registration on this address.</p>
-          <input type="text" name="email" required="true" placeholder="Email address">
+          <input type="email" name="email" required="true" placeholder="Email address" required="true">
         </div>
         
-        <div class="question">
+        <div class="question" required="true">
           <h5>Phone/Contact Number</h5>
           <p class="description">Please enter the full mobile number, i.e including the country code.</p>
-          <input type="text" name="phone" required="true" placeholder="Mobile Number">
+          <input type="tel" name="phone" required="true" placeholder="Mobile Number" required="true">
         </div>
 
-        <div class="question">
+        <div class="radio-group" required="true">
           <h5>Accommodation</h5>
           <p class="description">Do you require accommodation?</p>
-          <p><label>
-            <input class="with-gap" name="accommodation" value="YES" type="radio" required="true">
+          <p class="radio-button"><label>
+            <input class="with-gap" name="accommodation" value="YES" type="radio">
             <span>Yes</span>
           </label></p>
 
-          <p><label>
-            <input class="with-gap" name="accommodation" value="No" type="radio" required="true">
+          <p class="radio-button"><label>
+            <input class="with-gap" name="accommodation" value="No" type="radio">
             <span>No</span>
           </label></p>
         </div>
@@ -155,13 +157,13 @@
     In the position preferences section, please select a position from those available for this committee.<br>
     You can check positions on <a href="https://jmimun.net/resources">the resources page</a><br><br>
 
-    <div class="question">
+    <div class="question" required="true">
       <h5>Your MUN experience</h5>
       <p class="description">
         Please enter the number of Model UN conferences you have attended as a delegate. 
         This will help us allot you a country appropriate to your experience.
       </p>
-      <input type="number" name="xp" id="xp" placeholder="Number of MUNs">
+      <input type="number" name="xp" id="xp" placeholder="Number of MUNs" required="true">
     </div>
 
     <div class="question">
@@ -171,15 +173,21 @@
     </div>
     
     <h3>Position Preferences</h3>
-    
-    Position Preference 1<br>
-    <input type="text" name="pref1" placeholder="Portfolio"><br><br>
-    
-    Position Preference 2<br>
-    <input type="text" name="pref2" placeholder="Portfolio"><br><br>
 
-    Position Preference 3<br>
-    <input type="text" name="pref3" placeholder="Portfolio"><br><br>
+    <div class="question" required="true">
+      Position Preference 1<br>
+      <input type="text" name="pref1" placeholder="Portfolio" required="true">
+    </div>
+
+    <div class="question" required="true">
+      Position Preference 2<br>
+      <input type="text" name="pref2" placeholder="Portfolio" required="true">
+    </div>
+    
+    <div class="question">
+      Position Preference 3<br>
+      <input type="text" name="pref3" placeholder="Portfolio">
+    </div>
 
     <button class="btn-flat waves-effect grey" type="button" onclick="showPrev()">BACK</button>
     <button class="btn-flat waves-effect grey" type="button" onclick="showNext()">NEXT</button>
@@ -195,16 +203,18 @@
       On this page, you will be required to enter your registration number and password, both of which will be emailed to you after completion of registration, 
       and you will be shown the position you have been allotted. The same page will contain the payment information<br><br>
 
-      <h5>Do you agree to the payment?</h5><br>
-      Do you agree to the terms of payment? Keep in mind that selecting NO may lead to cancellation of your application.<br>
-
-      <div class="radio-group">
-        <p><label>
+      <div class="radio-group" required="true">
+        <h5>Do you agree to the payment?</h5>
+        <p class="description">
+          Do you agree to the terms of payment? Keep in mind that selecting NO may lead to cancellation of your application.
+        </p>
+        
+        <p class="radio-button"><label>
           <input type="radio" class="with-gap" name="payment" value="YES">
           <span>YES</span><br>
         </label></p>
 
-        <p><label>
+        <p class="radio-button"><label>
           <input type="radio" class="with-gap" name="payment" value="NO">
           <span>NO</span><br>
         </label></p>
